@@ -104,18 +104,23 @@ ${message}
 
     } catch (error) {
 
-        console.error("Email sending error:", error);
+    console.error("Email sending error:", error.message);
 
+    console.error(
+        "EMAIL_USER exists:",
+        !!process.env.EMAIL_USER
+    );
 
-        res.status(500).json({
+    console.error(
+        "EMAIL_PASS exists:",
+        !!process.env.EMAIL_PASS
+    );
 
-            success: false,
-
-            message: "Failed to send message"
-
-        });
-
-    }
+    res.status(500).json({
+        success: false,
+        message: "Failed to send message"
+    });
+}
 
 });
 

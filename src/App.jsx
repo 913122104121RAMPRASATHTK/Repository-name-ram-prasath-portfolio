@@ -83,8 +83,12 @@ function Portfolio() {
             return;
         }
         try {
+            console.log(
+                "API URL:",
+                import.meta.env.VITE_API_URL
+            );
             const response = await fetch(
-                "http://localhost:8000/api/contact",
+                `${import.meta.env.VITE_API_URL}/api/contact`,
                 {
                     method: "POST",
                     headers: {
@@ -289,7 +293,7 @@ const [formErrors, setFormErrors] = useState({});
                     <div className="home-actions">
                         <a
                             href="/Ram-Prasath-T-K-Resume.pdf"
-                            download
+                            download="Ram-Prasath-T-K-Resume.pdf"
                             className="resume-button"
                             onClick={() => {
                                 setDownloadMessage(true);
@@ -302,7 +306,7 @@ const [formErrors, setFormErrors] = useState({});
                             ↓ Download Resume
                         </a>
                         <a
-                            href="https://www.linkedin.com/"
+                            href="https://www.linkedin.com/in/ramprasath-tk/"
                             target="_blank"
                             rel="noreferrer"
                             className="social-button"
@@ -310,7 +314,7 @@ const [formErrors, setFormErrors] = useState({});
                             <Linkedin size={22} />
                         </a>
                         <a
-                            href="https://github.com/"
+                            href="https://github.com/913122104121RAMPRASATHTK"
                             target="_blank"
                             rel="noreferrer"
                             className="social-button"
@@ -318,7 +322,7 @@ const [formErrors, setFormErrors] = useState({});
                             <Github size={22} />
                         </a>
                         <a
-                            href="mailto:your-email@gmail.com"
+                            href="ramrailwaysofficial@gmail.com"
                             className="social-button"
                         >
                             <Envelope size={22} />
@@ -416,7 +420,7 @@ const [formErrors, setFormErrors] = useState({});
                         </div>
                         <h3>Programming</h3>
                         <p>
-                            Java, C, C++, JavaScript, Python
+                            Java, C++
                         </p>
                     </div>
                     <div className="skill-card">
@@ -428,7 +432,7 @@ const [formErrors, setFormErrors] = useState({});
                         </div>
                         <h3>Web Development</h3>
                         <p>
-                            HTML5, CSS3, Tailwind CSS, Bootstrap, React.js, Node.js, Express.js
+                            HTML, CSS, JavaScript, React.js, Node.js, Express.js
                         </p>
                     </div>
                     <div className="skill-card">

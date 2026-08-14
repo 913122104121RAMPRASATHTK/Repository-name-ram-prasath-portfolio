@@ -77,41 +77,44 @@ function Portfolio() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const isValid = validateForm();
-        if (!isValid) {
-            return;
-        }
-        try {
-            console.log(
-                "API URL:",
-                import.meta.env.VITE_API_URL
-            );
-            const response = await fetch(
-                `${import.meta.env.VITE_API_URL}/api/contact`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(formData)
-                }
-            );
-            const data = await response.json();
-            if (response.ok) {
-                console.log("Server Response:", data);
-                setSubmitMessage(true);
-                setTimeout(() => {
-                    setSubmitMessage(false);
-                }, 3000)
-            } else {
-                console.error("Server Error:", data);
+    e.preventDefault();
+    console.log("SUBMIT BUTTON CLICKED");
+    const isValid = validateForm();
+    console.log("Form Valid:", isValid);
+    if (!isValid) {
+        console.log("Validation failed");
+        return;
+    }
+    try {
+        console.log(
+            "API URL:",
+            import.meta.env.VITE_API_URL
+        );
+        const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/contact`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
             }
-        } catch (error) {
-            console.error("Connection Error:", error);
-            alert("Unable to connect to the server.");
+        );
+        const data = await response.json();
+        if (response.ok) {
+            console.log("Server Response:", data);
+            setSubmitMessage(true);
+            setTimeout(() => {
+                setSubmitMessage(false);
+            }, 3000);
+        } else {
+            console.error("Server Error:", data);
         }
-    };
+    } catch (error) {
+        console.error("Connection Error:", error);
+        alert("Unable to connect to the server.");
+    }
+};
 
 const [formErrors, setFormErrors] = useState({});
     useEffect(() => {
